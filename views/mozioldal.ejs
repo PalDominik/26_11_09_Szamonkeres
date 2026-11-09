@@ -3,30 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= locals.title || "no title" %></title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <title><%= locals.title || "Jegyfoglalás" %></title>
 </head>
 <body>
-    <h1><%= locals.webTitle || "No webTitle"%></h1>
+    <h1><%= locals.webTitle || "Adatok megadása"%></h1>
     <br>
     <form method="post">
-        <label>Név:</label>
-        <input type="text" name="name" value="<%= locals.body?.name %>"><br>
-        <label>Email:</label>
-        <input type="text" name="e_mail" value="<%= locals.body?.e_mail %>"><br>
-        <label>Dátum:</label>
-        <input type="datetime-local" name="date" value="<%= locals.body?.date %>"><br>
-        <label>Helyek száma:</label>
-        <input type="number" name="reservation" value="<%= locals.body?.reservation %>"><br>
+        <div class="mb-3 mt-3">
+            <label class="form-label">Név:</label>
+            <input type="text" name="name" value="<%= locals.body?.name %>" class="form-control"><br>
+        </div>
+        <div class="mb-3">
+            <label>Email:</label>
+            <input type="text" name="e_mail" value="<%= locals.body?.e_mail %>" class="form-control"><br>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Dátum:</label>
+            <input type="datetime-local" name="date" value="<%= locals.body?.date %>" class="form-control"><br>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Helyek száma:</label>
+            <input type="number" name="reservation" value="<%= locals.body?.reservation %>" class="form-control"><br>
+        </div>
          <% if(locals.errors){ %>
            <% errors.forEach(e => { %>
-                <p><%= e %></p>
+                <p class="alert alert-danger"><%= e %></p>
            <% }) %> 
         <% } %>
         <br>
-        <button type="submit">Foglalás</button>
+        <button class="btn btn-primary" type="submit">Foglalás</button>
     </form>
     <% if(locals.success){ %>
-        <p><%= locals.success %></p>
+        <p class="alert alert-success"><%= locals.success %></p>
     <% } %>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
 </html>
